@@ -1,0 +1,5 @@
+build/
+kvstore.snapshot
+.git/
+.vscode/
+CMakeUserPresets.json
