@@ -24,7 +24,8 @@ int main(int argc, char* argv[]) {
 
     sockaddr_in addr{};
     addr.sin_family = AF_INET;
-    addr.sin_port = htons(6380);
+    int port = argc > 4 ? std::stoi(argv[4]) : 6380;
+    addr.sin_port = htons(static_cast<uint16_t>(port));
     inet_pton(AF_INET, "127.0.0.1", &addr.sin_addr);
 
     if (connect(sock, reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) < 0) {
